@@ -1,7 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 from outlet.models import *
 from .product_serializer import ProductListSerializer
-# from .outlet_serializer import OutletListSerializer
 
 
 class CategoryListSerializer(ModelSerializer):
@@ -18,10 +17,9 @@ class CategoryListSerializer(ModelSerializer):
 
 
 class CategoryCreateSerializer(ModelSerializer):
-    # outlet = OutletListSerializer(required=False, many=True)
     class Meta:
         model = CategoryModel
         fields = (
+            'id',
             'name',
-            # 'outlet'
         )

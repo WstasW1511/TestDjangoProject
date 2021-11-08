@@ -1,4 +1,3 @@
-from .outlet_serializer import OutletListSerializer, OutletCreateSerializer,OutletSerializer
+from .outlet_serializer import OutletListSerializer, OutletCreateSerializer, OutletSerializer, OutletRetrieveSerializer
 from .category_serializer import CategoryListSerializer, CategoryCreateSerializer
-from .product_serializer import ProductListSerializer
-
+from .product_serializer import ProductListSerializer, ProductUpdateSerializer, ProductCreateSerializer

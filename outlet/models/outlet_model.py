@@ -14,8 +14,10 @@ class OutletModel(models.Model):
 
 class ProductModel(models.Model):
     title = models.CharField(max_length=100, verbose_name='Название товара')
-    description = models.CharField(max_length=250, verbose_name='Описание товара')
-    category = models.ForeignKey('outlet.CategoryModel', related_name='products', on_delete=models.CASCADE, verbose_name='Товар')
+    description = models.CharField(max_length=250, verbose_name='Описание товара', blank=True, null=True)
+    category = models.ForeignKey('outlet.CategoryModel', related_name='products', on_delete=models.CASCADE,
+                                 verbose_name='Категория')
+    updated = models.SmallIntegerField(default=1, verbose_name='Кол-во обновлений')
 
     class Meta:
         verbose_name = 'Товар'
@@ -28,7 +30,8 @@ class ProductModel(models.Model):
 class CategoryModel(models.Model):
     name = models.CharField(max_length=100, verbose_name='Название категории')
     description = models.CharField(max_length=255, verbose_name='Описание категории', blank=True, null=True)
-    outlet = models.ForeignKey(OutletModel, related_name='categories', on_delete=models.CASCADE, verbose_name='Магазин')
+    outlet = models.ForeignKey(OutletModel, related_name='categories', on_delete=models.CASCADE, blank=True, null=True,
+                               verbose_name='Магазин')
 
     class Meta:
         verbose_name = 'Категория'
@@ -36,7 +39,3 @@ class CategoryModel(models.Model):
 
     def __str__(self):
         return str(self.name)
-
-
-
-
